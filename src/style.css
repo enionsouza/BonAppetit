@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Proxima Nova";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/proxima-nova-light.otf") format("opentype");
+}
+
+:root {
+  --font-family-sans-serif: "Proxima Nova", system-ui, -apple-system, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --primary-color: #1c78c0;
+  --secondary-color: #8ed6fb;
+  --background-color: #d5ebf6;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.new-style {
+  color: var(--primary-color);
+  font-family: var(--font-family-sans-serif);
+  text-align: center;
+}

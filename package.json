@@ -1,0 +1,44 @@
+{
+  "name": "bon-appetit",
+  "version": "1.0.0",
+  "description": "JavaScript Module Group Capstone Project",
+  "private": true,
+  "scripts": {
+    "test": "jest --verbose --coverage",
+    "watch-test": "jest --verbose --watch",
+    "build": "webpack",
+    "start": "webpack serve --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enionsouza/BonAppetit.git"
+  },
+  "keywords": [],
+  "author": "Azeez Rotimi Arigbabuwo & Enio Neves de Souza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enionsouza/BonAppetit/issues"
+  },
+  "homepage": "https://github.com/enionsouza/BonAppetit#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "babel-eslint": "^10.1.0",
+    "css-loader": "^6.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.0",
+    "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.1.0",
+    "style-loader": "^3.2.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.20.1",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.0"
+  }
+}
