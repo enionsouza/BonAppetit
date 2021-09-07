@@ -90,7 +90,10 @@ function mealRecipeModal(meal) {
 }
 
 const logo = document.getElementById('img-logo');
+const logoFooter = document.getElementById('img-logo-footer');
 logo.src = bonAppetitLogo;
+logoFooter.src = bonAppetitLogo;
+
 
 fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
   .then((res) => res.json())
