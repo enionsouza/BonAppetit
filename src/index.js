@@ -5,33 +5,29 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './style.css';
+import bonAppetitLogo from './img/BonAppetit-Logo-tenne-tawny-dark.svg';
 
 const searchBtn = document.getElementById('search-btn');
 const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
 const queryOptions = {
-  'Ingredient': 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
+  Ingredient: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
   'Meal name': 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
-  'Category': 'https://www.themealdb.com/api/json/v1/1/filter.php?c=',
-  'Area': 'https://www.themealdb.com/api/json/v1/1/filter.php?a=',
+  Category: 'https://www.themealdb.com/api/json/v1/1/filter.php?c=',
+  Area: 'https://www.themealdb.com/api/json/v1/1/filter.php?a=',
   'First letter': 'https://www.themealdb.com/api/json/v1/1/search.php?f=',
-  'Id': 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
+  Id: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
 };
 let selectedQuery = 'Ingredients';
 
-// get meal list that matches with the ingredients
-const getMealList = (e) => {
-  e.preventDefault();
-  let searchInputTxt = document.getElementById('search-input').value.trim();
-  let url = `${queryOptions[selectedQuery]}${searchInputTxt}`;
-  console.log(url);
+const fetchAPI = (url) => {
   fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      let html = "";
+    .then((response) => response.json())
+    .then((data) => {
+      let html = '';
       if (data.meals) {
-        data.meals.forEach(meal => {
+        data.meals.forEach((meal) => {
           html += `
                     <div class = "meal-item" data-id = "${meal.idMeal}">
                         <div class = "meal-img">
@@ -49,20 +45,25 @@ const getMealList = (e) => {
         html = "Sorry, we didn't find any meal!";
         mealList.classList.add('notFound');
       }
-
       mealList.innerHTML = html;
     });
-}
+};
 
+// get meal list that matches with the ingredients
+const getMealList = (e) => {
+  e.preventDefault();
+  const searchInputTxt = document.getElementById('search-input').value.trim();
+  fetchAPI(`${queryOptions[selectedQuery]}${searchInputTxt}`);
+};
 
 // get recipe of the meal
 function getMealRecipe(e) {
   e.preventDefault();
   if (e.target.classList.contains('recipe-btn')) {
-    let mealItem = e.target.parentElement.parentElement;
+    const mealItem = e.target.parentElement.parentElement;
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
-      .then(response => response.json())
-      .then(data => mealRecipeModal(data.meals));
+      .then((response) => response.json())
+      .then((data) => mealRecipeModal(data.meals));
   }
 }
 
@@ -70,7 +71,7 @@ function getMealRecipe(e) {
 function mealRecipeModal(meal) {
   console.log(meal);
   meal = meal[0];
-  let html = `
+  const html = `
         <h2 class = "recipe-title">${meal.strMeal}</h2>
         <p class = "recipe-category">${meal.strCategory}</p>
         <div class = "recipe-instruct">
@@ -88,6 +89,36 @@ function mealRecipeModal(meal) {
   mealDetailsContent.parentElement.classList.add('showRecipe');
 }
 
+const logo = document.getElementById('img-logo');
+logo.src = bonAppetitLogo;
+
+fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
+  .then((res) => res.json())
+  .then((data) => {
+    const navBarCategories = document.getElementById('nav');
+    data.categories.forEach((category) => {
+      navBarCategories.innerHTML += `
+        <li class="nav-item col-3">
+          <a class="nav-link" href="#">${category.strCategory}</a>
+        </li>
+      `;
+    });
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < navBarCategories.children.length; i++) {
+      navBarCategories.children[i].children[0].addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchAPI(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${e.target.textContent}`);
+      });
+    }
+    const randomBtn = document.createElement('li');
+    randomBtn.classList.add('nav-item', 'col-6');
+    randomBtn.innerHTML = '<a class="nav-link" href="#">Suggestion du Chef!</a>';
+    randomBtn.children[0].addEventListener('click', (e) => {
+      e.preventDefault();
+      fetchAPI('https://www.themealdb.com/api/json/v1/1/random.php');
+    });
+    navBarCategories.appendChild(randomBtn);
+  });
 
 // event listeners
 searchBtn.addEventListener('click', getMealList);
@@ -98,7 +129,7 @@ mealList.addEventListener('click', getMealRecipe);
 
 const ulQueries = document.querySelector('.dropdown-menu');
 Object.keys(queryOptions).forEach((queryOption) => {
-  ulQueries.innerHTML += `<li><a class="dropdown-item" href="#">${queryOption}</a></li>`
+  ulQueries.innerHTML += `<li><a class="dropdown-item" href="#">${queryOption}</a></li>`;
 });
 
 const queryTypes = document.querySelectorAll('.dropdown-item');

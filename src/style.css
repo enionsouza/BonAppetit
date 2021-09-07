@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 @font-face {
   font-family: "Proxima Nova";
   font-style: normal;
@@ -25,15 +26,39 @@
   --secondary-color: #8ed6fb;
   --background-color: #d5ebf6;
   --tenne-tawny: #d65108;
+  --tenne-tawny-light: #ff7d38;
   --tenne-tawny-dark: #b54507;
 }
 
 body {
-  background-color: var(--background-color);
+  background-color: var(--tenne-tawny-light);
   font-weight: 300;
   font-size: 1.05rem;
   line-height: 1.6;
   font-family: "Poppins", sans-serif;
+}
+
+.logo {
+  font-family: 'Parisienne', cursive;
+  color: var(--tenne-tawny-dark);
+  min-width: 350px;
+}
+
+a.logo:hover {
+  color: var(--tenne-tawny-dark);
+}
+
+#app-logo {
+  font-weight: bold;
+}
+
+#nav a {
+  color: var(--tenne-tawny-dark);
+}
+
+#nav a:hover {
+  color: var(--tenne-tawny-dark);
+  font-weight: bold;
 }
 
 .btn {
@@ -96,6 +121,10 @@ body {
 
 .search-control::placeholder {
   color: var(--tenne-tawny);
+}
+
+.dropdown-toggle::after {
+  margin: 0;
 }
 
 .search-btn {

@@ -9,6 +9,17 @@
 
 <body>
 
+  <header class="d-flex align-items-center">
+    <a href="#" class="logo p-3">
+      <h1>Bon<img id="img-logo" src="" alt="logo" width="100"><span id="app-logo">App</span>étit</h1>
+    </a>
+
+    <nav class="flex-grow-1">
+      <ul id="nav" class="nav justify-content-end col-12">
+      </ul>
+    </nav>
+  </header>
+
   <div class="container">
     <div class="meal-wrapper">
       <div class="meal-search">
@@ -19,7 +30,7 @@
 
         <form class="meal-search-box input-group">
           <input type="text" class="search-control form-control" placeholder="Enter a search query..." id="search-input">
-          <button type="button" class="search-btn btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <button type="button" class="p-0 search-btn btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu">
