@@ -224,6 +224,7 @@ a.logo:hover {
 
 .recipe-btn:hover {
   background: var(--tenne-tawny-dark);
+  color: #fff;
 }
 
 .showRecipe {
@@ -241,6 +242,7 @@ a.logo:hover {
 }
 
 .fill-tenne-tawny {
+  font-size: 1.25rem;
   color: var(--tenne-tawny);
 }
 
