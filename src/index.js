@@ -27,14 +27,18 @@ const fetchAPI = (url) => {
       if (data.meals) {
         data.meals.forEach((meal) => {
           html += `
-                    <div class = "meal-item" data-id = "${meal.idMeal}">
-                        <div class = "meal-img">
-                            <img src = "${meal.strMealThumb}" alt = "food">
+                    <div class="meal-item" id="${meal.idMeal}">
+                        <div class="meal-img">
+                            <img src="${meal.strMealThumb}" alt="${meal.strMeal} image">
                         </div>
-                        <div class = "meal-name">
-                            <h3>${meal.strMeal}</h3>
-                            <a href = "#" class = "recipe-btn">Get Recipe</a>
+                        <div class="meal-name">
+                            <h3 class="mb-4">${meal.strMeal}</h3>
+                            <div className="d-flex mt-3">
+                              <a href="#" class="recipe-btn me-3">Get Recipe</a>
+                              <i class="fas fa-heart ms-3 fill-empty"></i>
+                            </div>
                         </div>
+
                     </div>
                 `;
         });
@@ -91,7 +95,6 @@ const logo = document.getElementById('img-logo');
 const logoFooter = document.getElementById('img-logo-footer');
 logo.src = bonAppetitLogo;
 logoFooter.src = bonAppetitLogo;
-
 
 fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
   .then((res) => res.json())
