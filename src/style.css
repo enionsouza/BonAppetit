@@ -48,7 +48,7 @@ a.logo:hover {
   color: var(--tenne-tawny-dark);
 }
 
-#app-logo {
+#app-logo, #app-logo-footer, .bold {
   font-weight: bold;
 }
 
@@ -59,6 +59,10 @@ a.logo:hover {
 #nav a:hover {
   color: var(--tenne-tawny-dark);
   font-weight: bold;
+}
+
+.nav-item {
+  text-align: center;
 }
 
 .btn {
@@ -78,7 +82,7 @@ a.logo:hover {
 }
 
 .container {
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .meal-wrapper {

@@ -14,10 +14,8 @@ const recipeCloseBtn = document.getElementById('recipe-close-btn');
 const queryOptions = {
   Ingredient: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
   'Meal name': 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
-  Category: 'https://www.themealdb.com/api/json/v1/1/filter.php?c=',
   Area: 'https://www.themealdb.com/api/json/v1/1/filter.php?a=',
   'First letter': 'https://www.themealdb.com/api/json/v1/1/search.php?f=',
-  Id: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
 };
 let selectedQuery = 'Ingredients';
 
@@ -98,10 +96,10 @@ logoFooter.src = bonAppetitLogo;
 fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
   .then((res) => res.json())
   .then((data) => {
-    const navBarCategories = document.getElementById('nav');
+    const navBarCategories = document.getElementById('nav-categories');
     data.categories.forEach((category) => {
       navBarCategories.innerHTML += `
-        <li class="nav-item col-3">
+        <li class="nav-item">
           <a class="nav-link" href="#">${category.strCategory}</a>
         </li>
       `;
@@ -113,15 +111,13 @@ fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
         fetchAPI(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${e.target.textContent}`);
       });
     }
-    const randomBtn = document.createElement('li');
-    randomBtn.classList.add('nav-item', 'col-6');
-    randomBtn.innerHTML = '<a class="nav-link" href="#">Suggestion du Chef!</a>';
-    randomBtn.children[0].addEventListener('click', (e) => {
+  });
+
+  const suggestionDuChef = document.getElementById('suggestion-du-chef');
+  suggestionDuChef.addEventListener('click', (e) => {
       e.preventDefault();
       fetchAPI('https://www.themealdb.com/api/json/v1/1/random.php');
     });
-    navBarCategories.appendChild(randomBtn);
-  });
 
 // event listeners
 searchBtn.addEventListener('click', getMealList);
@@ -130,12 +126,12 @@ mealList.addEventListener('click', getMealRecipe);
 //   mealDetailsContent.parentElement.classList.remove('showRecipe');
 // });
 
-const ulQueries = document.querySelector('.dropdown-menu');
+const ulQueries = document.querySelector('#drop-down-queries');
 Object.keys(queryOptions).forEach((queryOption) => {
-  ulQueries.innerHTML += `<li><a class="dropdown-item" href="#">${queryOption}</a></li>`;
+  ulQueries.innerHTML += `<li><a class="dropdown-item query-type" href="#">${queryOption}</a></li>`;
 });
 
-const queryTypes = document.querySelectorAll('.dropdown-item');
+const queryTypes = document.querySelectorAll('.query-type');
 // eslint-disable-next-line no-plusplus
 for (let i = 0; i < queryTypes.length; i++) {
   // eslint-disable-next-line no-loop-func

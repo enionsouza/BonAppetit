@@ -8,22 +8,37 @@
 </head>
 
 <body>
-
-  <header class="d-flex align-items-center">
-    <a href="#" class="logo p-3">
-      <h1>Bon<img id="img-logo" src="" alt="logo" width="100"><span id="app-logo">App</span>étit</h1>
-    </a>
-
-    <nav class="flex-grow-1">
-      <ul id="nav" class="nav justify-content-end col-12">
-      </ul>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand logo p-3">
+          <h1>Bon<img id="img-logo" src="" alt="logo" width="100"><span id="app-logo">App</span>étit</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a id="suggestion-du-chef" class="nav-link active" aria-current="page" href="#">Suggestion du Chef</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbar-drop-categories" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Select a Category
+              </a>
+              <ul id="nav-categories" class="dropdown-menu" aria-labelledby="navbar-drop-categories">
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
   </header>
 
   <div class="container">
     <div class="meal-wrapper">
       <div class="meal-search">
-        <h2 class="title">Find Meals For Your Ingredients</h2>
+        <h2 class="title">Find Meals by Name, Ingredients, Origin, or First Letter</h2>
         <blockquote>Real food doesn't have ingredients, real food is ingredients.<br>
           <cite>- Jamie Oliver</cite>
         </blockquote>
@@ -33,7 +48,7 @@
           <button type="button" class="p-0 search-btn btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
-          <ul class="dropdown-menu">
+          <ul id="drop-down-queries" class="dropdown-menu">
           </ul>
           <button type="submit" class="search-btn btn btn-outline-secondary" id="search-btn">
             <i class="fas fa-search"></i>
