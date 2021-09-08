@@ -38,6 +38,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+header {
+  background-color: var(--tenne-tawny-light);
+}
+
 .logo {
   font-family: 'Parisienne', cursive;
   color: var(--tenne-tawny-dark);
@@ -52,6 +56,10 @@ a.logo:hover {
   font-weight: bold;
 }
 
+.navbar-nav {
+  font-size: 1.25rem;
+}
+
 #nav a {
   color: var(--tenne-tawny-dark);
 }
@@ -63,6 +71,16 @@ a.logo:hover {
 
 .nav-item {
   text-align: center;
+}
+
+#suggestion-du-chef {
+  font-family: 'Parisienne', cursive;
+  font-size: 1.5rem;
+}
+
+.scroll {
+  height: 25vh;
+  overflow-y: scroll;
 }
 
 .btn {
@@ -220,6 +238,10 @@ a.logo:hover {
 .fill-empty:hover {
   color: rgb(163, 163, 163);
   cursor: pointer;
+}
+
+.fill-tenne-tawny {
+  color: var(--tenne-tawny);
 }
 
 .meal-details-content {

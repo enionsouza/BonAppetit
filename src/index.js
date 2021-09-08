@@ -6,6 +6,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './style.css';
 import bonAppetitLogo from './img/BonAppetit-Logo-tenne-tawny-dark.svg';
+import { postLike } from './involvement';
 
 const searchBtn = document.getElementById('search-btn');
 const mealList = document.getElementById('meal');
@@ -27,20 +28,28 @@ const fetchAPI = (url) => {
       if (data.meals) {
         data.meals.forEach((meal) => {
           html += `
-                    <div class="meal-item" id="${meal.idMeal}">
+                    <div class="meal-item" data-id="${meal.idMeal}">
                         <div class="meal-img">
                             <img src="${meal.strMealThumb}" alt="${meal.strMeal} image">
                         </div>
                         <div class="meal-name">
                             <h3 class="mb-4">${meal.strMeal}</h3>
                             <div className="d-flex mt-3">
-                              <a href="#" class="recipe-btn me-3">Get Recipe</a>
-                              <i class="fas fa-heart ms-3 fill-empty"></i>
+                              <a href="#" class="recipe-btn me-3" id="more-${meal.idMeal}">See more ...</a>
+                              <i class="fas fa-heart ms-3 fill-empty" id="like-${meal.idMeal}"></i>
                             </div>
                         </div>
-
                     </div>
                 `;
+        });
+        data.meals.forEach((meal) => {
+          const likeButton = document.getElementById(`like-${meal.idMeal}`);
+          likeButton.addEventListener('click', async (e) => {
+            e.preventDefault();
+            likeButton.classList.add('fill-tenne-tawny');
+            likeButton.classList.remove('fill-empty');
+            await postLike(meal.idMeal);
+          });
         });
         mealList.classList.remove('notFound');
       } else {
@@ -65,13 +74,14 @@ function getMealRecipe(e) {
     const mealItem = e.target.parentElement.parentElement;
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
       .then((response) => response.json())
+      // eslint-disable-next-line no-use-before-define
       .then((data) => mealRecipeModal(data.meals));
   }
 }
 
 // create a modal
 function mealRecipeModal(meal) {
-  console.log(meal);
+  // eslint-disable-next-line prefer-destructuring
   meal = meal[0];
   const html = `
         <h2 class = "recipe-title">${meal.strMeal}</h2>
@@ -116,18 +126,18 @@ fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
     }
   });
 
-  const suggestionDuChef = document.getElementById('suggestion-du-chef');
-  suggestionDuChef.addEventListener('click', (e) => {
-      e.preventDefault();
-      fetchAPI('https://www.themealdb.com/api/json/v1/1/random.php');
-    });
+const suggestionDuChef = document.getElementById('suggestion-du-chef');
+suggestionDuChef.addEventListener('click', (e) => {
+  e.preventDefault();
+  fetchAPI('https://www.themealdb.com/api/json/v1/1/random.php');
+});
 
 // event listeners
 searchBtn.addEventListener('click', getMealList);
 mealList.addEventListener('click', getMealRecipe);
-// recipeCloseBtn.addEventListener('click', () => {
-//   mealDetailsContent.parentElement.classList.remove('showRecipe');
-// });
+recipeCloseBtn.addEventListener('click', () => {
+  mealDetailsContent.parentElement.classList.remove('showRecipe');
+});
 
 const ulQueries = document.querySelector('#drop-down-queries');
 Object.keys(queryOptions).forEach((queryOption) => {
