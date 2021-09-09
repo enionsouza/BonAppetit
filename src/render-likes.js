@@ -16,4 +16,4 @@ export const renderLikes = (likes) => {
     const parentDiv = likeBtn.parentNode;
     parentDiv.insertBefore(likesQty, likeBtn);
   }
-}
+};

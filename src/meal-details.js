@@ -1,4 +1,6 @@
 /* eslint-disable import/prefer-default-export */
+import { postComment, getComments } from './involvement';
+
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
 
@@ -48,19 +50,21 @@ function mealDetailsModal(meal) {
           <iframe width="560" height="315" src="${youTubeLink}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="wrapper">
+          <div id="comments" className="inner">
+          </div>
           <div class="inner">
             <form action="">
               <h3>Add Comment</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+              <p>What is your opinion about this meal?</p>
               <label class="form-group">
-                <input type="text" class="form-control-details" required placeholder="Name">
+                <input id="user-name" type="text" class="form-control-details" required placeholder="Name">
                 <span class="border"></span>
               </label>
               <label class="form-group">
-                <textarea name="" id="" class="form-control-details" required placeholder="Share your thought" cols="7" rows="7"></textarea>
+                <textarea id="user-opinion" class="form-control-details" required placeholder="Share your thought" cols="7" rows="7"></textarea>
                 <span class="border"></span>
               </label>
-              <button>Submit</button>
+              <button id="submit-comment">Submit</button>
             </form>
           </div>
         </div>
@@ -68,6 +72,21 @@ function mealDetailsModal(meal) {
     `;
   mealDetailsContent.innerHTML = html;
   mealDetailsContent.parentElement.classList.add('showRecipe');
+  getComments(meal.idMeal);
+
+  // Add Event Listeners
+  const submitComment = document.getElementById('submit-comment');
+  const userNameInput = document.getElementById('user-name');
+  const userOpinionInput = document.getElementById('user-opinion');
+  submitComment.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (userNameInput.value.trim() && userOpinionInput.value.trim()) {
+      postComment(meal.idMeal, userNameInput.value.trim(), userOpinionInput.value.trim());
+      userNameInput.value = '';
+      userOpinionInput.value = '';
+      getComments(meal.idMeal);
+    }
+  });
 }
 
 recipeCloseBtn.addEventListener('click', () => {
