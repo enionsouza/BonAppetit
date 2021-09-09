@@ -41,6 +41,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@popperjs/core": "^2.10.1",
-    "bootstrap": "^5.1.0"
+    "bootstrap": "^5.1.0",
+    "pluralize": "^8.0.0"
   }
 }
