@@ -49,15 +49,15 @@ function mealDetailsModal(meal) {
         <div class = "recipe-link">
           <iframe width="560" height="315" src="${youTubeLink}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="wrapper">
-          <div id="comments" className="inner">
+        <div class="wrapper inner">
+          <div id="comments">
           </div>
-          <div class="inner">
+          <div>
             <form action="">
               <h3>Add Comment</h3>
               <p>What is your opinion about this meal?</p>
               <label class="form-group">
-                <input id="user-name" type="text" class="form-control-details" required placeholder="Name">
+                <input id="user-name" type="text" class="form-control-details" required placeholder="Name" row="3">
                 <span class="border"></span>
               </label>
               <label class="form-group">
