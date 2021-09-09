@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
 @font-face {
   font-family: "Proxima Nova";
   font-style: normal;
@@ -52,7 +53,9 @@ a.logo:hover {
   color: var(--tenne-tawny-dark);
 }
 
-#app-logo, #app-logo-footer, .bold {
+#app-logo,
+#app-logo-footer,
+.bold {
   font-weight: bold;
 }
 
@@ -227,6 +230,44 @@ a.logo:hover {
   color: #fff;
 }
 
+/* meal details */
+.meal-details {
+  position: fixed;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  color: #fff;
+  background: var(--tenne-tawny);
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  width: 90%;
+  height: 90%;
+  overflow-y: scroll;
+  display: none;
+  padding: 2rem 0;
+}
+
+.meal-details::-webkit-scrollbar {
+  width: 10px;
+}
+
+.meal-details::-webkit-scrollbar-thumb {
+  background: #f0f0f0;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+}
+
 .showRecipe {
   display: block;
 }
@@ -250,8 +291,20 @@ a.logo:hover {
   margin: 2rem;
 }
 
+.recipe {
+  text-align: left;
+}
+
 .meal-details-content p:not(.recipe-category) {
   padding: 1rem 0;
+}
+
+a.detail-source {
+  color: var(--tenne-tawny);
+}
+
+a.detail-source:hover {
+  color: var(--tenne-tawny-dark);
 }
 
 .recipe-close-btn {
@@ -297,13 +350,13 @@ a.logo:hover {
 }
 
 .recipe-meal-img img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  border-radius: 15%;
+  -webkit-border-radius: 15%;
+  -moz-border-radius: 15%;
+  -ms-border-radius: 15%;
+  -o-border-radius: 15%;
   margin: 0 auto;
   display: block;
 }
@@ -327,41 +380,67 @@ a.logo:hover {
   opacity: 0.8;
 }
 
-/* meal details */
-.meal-details {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  color: #fff;
-  background: var(--tenne-tawny);
-  border-radius: 1rem;
-  -webkit-border-radius: 1rem;
-  -moz-border-radius: 1rem;
-  -ms-border-radius: 1rem;
-  -o-border-radius: 1rem;
-  width: 90%;
-  height: 90%;
-  overflow-y: scroll;
-  display: none;
-  padding: 2rem 0;
+.ingredients-list {
+  list-style: none;
 }
 
-.meal-details::-webkit-scrollbar {
-  width: 10px;
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
-.meal-details::-webkit-scrollbar-thumb {
-  background: #f0f0f0;
-  border-radius: 2rem;
-  -webkit-border-radius: 2rem;
-  -moz-border-radius: 2rem;
-  -ms-border-radius: 2rem;
-  -o-border-radius: 2rem;
+.inner {
+  max-width: 758px;
+  margin: auto;
+  border: 10px solid var(--tenne-tawny-light);
+  padding: 77px 99px 87px;
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+  -webkit-box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+  -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+form {
+  display: block;
+  margin-top: 0;
+}
+
+.form-group {
+  position: relative;
+  display: block;
+  margin-bottom: 48px;
+}
+
+.form-control-details {
+  border: none;
+  border-bottom: 2px solid var(--tenne-tawny-dark);
+  display: block;
+  width: 100%;
+  font-size: 15px;
+}
+
+.form-group span {
+  font-size: 15px;
+  color: var(--tenne-tawny-dark);
+  position: absolute;
+  top: 11px;
+  transition: all 0.2s ease;
+  transform-origin: 0 0;
+  cursor: text;
+}
+
+.form-group span.border {
+  height: 2px;
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 41px;
+  transform: scaleX(0);
+  transition: all 0.15s ease;
+  background: #fff;
 }
 
 .notFound {

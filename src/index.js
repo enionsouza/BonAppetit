@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/js/fontawesome';
@@ -6,12 +7,14 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import './style.css';
 import bonAppetitLogo from './img/BonAppetit-Logo-tenne-tawny-dark.svg';
-import { postLike } from './involvement';
+import {
+  postLike,
+} from './involvement';
 
 const searchBtn = document.getElementById('search-btn');
 const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
-// const recipeCloseBtn = document.getElementById('recipe-close-btn');
+const recipeCloseBtn = document.getElementById('recipe-close-btn');
 const queryOptions = {
   Ingredient: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
   'Meal name': 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
@@ -91,19 +94,60 @@ const getMealDetails = async (mealId) => {
 
 // create a modal
 function mealDetailsModal(meal) {
+  const ingredient = [];
+  const measure = [];
+  let i = 1;
+  while (meal[`strIngredient${i}`]) {
+    ingredient.push(meal[`strIngredient${i}`]);
+    measure.push(meal[`strMeasure${i}`]);
+    i += 1;
+  }
+  let ingredientsHTML = '';
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < ingredient.length; i++) {
+    ingredientsHTML += `<li><span>${ingredient[i]}</span>: <span>${measure[i]}</span></li>`;
+  }
+  const youTubeLink = meal.strYoutube.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/');
   const html = `
+        <div class = "recipe-meal-img">
+         <img src = "${meal.strMealThumb}" alt = "${meal.strMeal} image">
+        </div>
         <h2 class = "recipe-title">${meal.strMeal}</h2>
         <p class = "recipe-category">${meal.strCategory}</p>
+        <div class="recipe">
         <div class = "recipe-instruct">
             <h3>Instructions:</h3>
             <p>${meal.strInstructions}</p>
         </div>
-        <div class = "recipe-meal-img">
-            <img src = "${meal.strMealThumb}" alt = "${meal.strMeal} image">
+        <div className="recipe-ingredient">
+          <h3>Ingredients:</h3>
+          <ul className="ingredients-list">
+            ${ingredientsHTML}
+          </ul>
+        </div>
         </div>
         <div class = "recipe-link">
-            <a href = "${meal.strYoutube}" target = "_blank">Watch Video</a>
+        <iframe width="560" height="315" src="${youTubeLink}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
+        <div class="wrapper">
+<div class="inner">
+<form action="">
+<h3>Add Comment</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+<label class="form-group">
+<input type="text" class="form-control-details" required placeholder="Name">
+<span class="border"></span>
+</label>
+<label class="form-group">
+<textarea name="" id="" class="form-control-details" required placeholder="Share your thought" cols="7" rows="7"></textarea>
+<span class="border"></span>
+</label>
+<button>Submit
+</button>
+</form>
+</div>
+</div>
+        <a href="${meal.strSource} class="detail-source">Source</a>
     `;
   mealDetailsContent.innerHTML = html;
   mealDetailsContent.parentElement.classList.add('showRecipe');
@@ -142,7 +186,9 @@ suggestionDuChef.addEventListener('click', (e) => {
 
 // event listeners
 searchBtn.addEventListener('click', getMealList);
-
+recipeCloseBtn.addEventListener('click', () => {
+  mealDetailsContent.parentElement.classList.remove('showRecipe');
+});
 const ulQueries = document.querySelector('#drop-down-queries');
 Object.keys(queryOptions).forEach((queryOption) => {
   ulQueries.innerHTML += `<li><a class="dropdown-item query-type" href="#">${queryOption}</a></li>`;
