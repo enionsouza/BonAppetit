@@ -1,3 +1,5 @@
+import { renderLikes } from './render-likes';
+
 const appId = 'emZFdA0IO3Wtnd0ZXf1j';
 
 export const postLike = async (idMeal) => {
@@ -10,7 +12,19 @@ export const postLike = async (idMeal) => {
       'Content-Type': 'application/json; charset=UTF-8',
     },
   })
-    .catch((error) => console.log(error));
+    .catch((error) => console.error(error));
+};
+
+export const getLikes = async () => {
+  await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/likes/`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => renderLikes(data))
+    .catch((error) => console.error(error));
 };
 
 export const postComment = (idMeal, username, comment) => {
