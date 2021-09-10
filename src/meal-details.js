@@ -68,7 +68,9 @@ function mealDetailsModal(meal) {
             </form>
           </div>
         </div>
-        <a href="${meal.strSource} class="detail-source">Source</a>
+        <a href="${meal.strSource}" class="detail-source" target="_blank">
+          Source<sup><i class="fas fa-external-link-alt fa-xs"></i></sup>
+        </a>
     `;
   mealDetailsContent.innerHTML = html;
   mealDetailsContent.parentElement.classList.add('showRecipe');
@@ -78,10 +80,10 @@ function mealDetailsModal(meal) {
   const submitComment = document.getElementById('submit-comment');
   const userNameInput = document.getElementById('user-name');
   const userOpinionInput = document.getElementById('user-opinion');
-  submitComment.addEventListener('click', (e) => {
+  submitComment.addEventListener('click', async (e) => {
     e.preventDefault();
     if (userNameInput.value.trim() && userOpinionInput.value.trim()) {
-      postComment(meal.idMeal, userNameInput.value.trim(), userOpinionInput.value.trim());
+      await postComment(meal.idMeal, userNameInput.value.trim(), userOpinionInput.value.trim());
       userNameInput.value = '';
       userOpinionInput.value = '';
       getComments(meal.idMeal);

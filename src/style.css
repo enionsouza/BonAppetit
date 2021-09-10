@@ -310,6 +310,7 @@ a.logo:hover {
 
 .meal-details-content {
   margin: 2rem;
+  position: relative;
 }
 
 .recipe {
@@ -321,11 +322,16 @@ a.logo:hover {
 }
 
 a.detail-source {
-  color: var(--tenne-tawny);
+  color: white;
+  position: relative;
+  top: 1rem;
+  text-decoration: none;
 }
 
 a.detail-source:hover {
-  color: var(--tenne-tawny-dark);
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .recipe-close-btn {
