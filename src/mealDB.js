@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { postLike, getLikes } from './involvement';
 import { getMealDetails } from './meal-details';
+import itemsCounter from './items-counter';
 
 export const fetchAPI = async (url, favoriteMeals) => {
   const mealList = document.getElementById('meal');
@@ -8,6 +9,8 @@ export const fetchAPI = async (url, favoriteMeals) => {
     .then((response) => response.json())
     .then((data) => {
       let html = '';
+      const queryResponseTitle = document.getElementById('items-counter');
+      queryResponseTitle.textContent = itemsCounter(data);
       if (data.meals) {
         data.meals.forEach((meal) => {
           html += `
@@ -54,7 +57,7 @@ export const fetchAPI = async (url, favoriteMeals) => {
         });
         mealList.classList.remove('notFound');
       } else {
-        mealList.innerHTML = "Sorry, we didn't find any meal!";
+        mealList.innerHTML = '';
         mealList.classList.add('notFound');
       }
     });

@@ -29,9 +29,6 @@ export const getLikes = async () => {
 };
 
 export const postComment = async (idMeal, username, comment) => {
-  console.log(idMeal);
-  console.log(username);
-  console.log(comment);
   await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/comments`, {
     method: 'POST',
     body: new URLSearchParams({ item_id: idMeal, username, comment }),
