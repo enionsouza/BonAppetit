@@ -49,7 +49,12 @@ describe('commentsCounter(comments: API response)', () => {
     `;
 
     // Act
-    commentsCounter({});
+    commentsCounter({
+      "error": {
+        "status": 400,
+        "message": "'item_id' not found.",
+      },
+    });
 
     // Assert
     const h3HTML = document.querySelector('h3');
