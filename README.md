@@ -45,6 +45,7 @@ A live demo for this project can be found in [this link](https://enionsouza.gith
 
 To run this project, you only need a computer with a browser installed, and follow these steps:
 
+
 1. In your terminal, in the folder of your preference, type the following bash command to clone this repository:
 
 ```sh
