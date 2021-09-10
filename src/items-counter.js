@@ -5,7 +5,6 @@ const itemsCounter = (data) => {
   if (data.meals) {
     return `Your search has returned ${pluralize('result', data.meals.length, true)}!`;
   }
-  return 'Sorry, we didn\'t find any meal!';
 };
 
 export default itemsCounter;

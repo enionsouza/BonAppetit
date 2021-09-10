@@ -57,7 +57,7 @@ export const fetchAPI = async (url, favoriteMeals) => {
         });
         mealList.classList.remove('notFound');
       } else {
-        mealList.innerHTML = '';
+        mealList.innerHTML = 'Sorry, we didn\'t find any meal!';
         mealList.classList.add('notFound');
       }
     });
