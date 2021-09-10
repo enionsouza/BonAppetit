@@ -1,5 +1,5 @@
 import { renderLikes } from './render-likes';
-import { renderComments, renderNoComments } from './render-comments';
+import commentsCounter from './comments-counter';
 
 const appId = 'emZFdA0IO3Wtnd0ZXf1j';
 
@@ -46,11 +46,5 @@ export const getComments = async (idMeal) => {
     redirect: 'follow',
   })
     .then((res) => res.json())
-    .then((comments) => {
-      if (comments.length > 0) {
-        renderComments(comments);
-      } else {
-        renderNoComments();
-      }
-    });
+    .then((comments) => commentsCounter(comments));
 };
