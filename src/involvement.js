@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { renderLikes } from './render-likes';
 import commentsCounter from './comments-counter';
 
@@ -13,8 +12,7 @@ export const postLike = async (idMeal) => {
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
     },
-  })
-    .catch((error) => console.error(error));
+  });
 };
 
 export const getLikes = async () => {
@@ -25,8 +23,7 @@ export const getLikes = async () => {
     },
   })
     .then((res) => res.json())
-    .then((data) => renderLikes(data))
-    .catch((error) => console.error(error));
+    .then((data) => renderLikes(data));
 };
 
 export const postComment = async (idMeal, username, comment) => {
@@ -34,8 +31,7 @@ export const postComment = async (idMeal, username, comment) => {
     method: 'POST',
     body: new URLSearchParams({ item_id: idMeal, username, comment }),
   })
-    .then((res) => res.text())
-    .then((text) => console.info(text));
+    .then((res) => res.text());
 };
 
 export const getComments = async (idMeal) => {

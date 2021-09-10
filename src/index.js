@@ -43,8 +43,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
         </li>
       `;
     });
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < navBarCategories.children.length; i++) {
+    for (let i = 0; i < navBarCategories.children.length; i += 1) {
       navBarCategories.children[i].children[0].addEventListener('click', (e) => {
         e.preventDefault();
         fetchAPI(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${e.target.textContent}`, favoriteMeals);
@@ -66,8 +65,7 @@ Object.keys(queryOptions).forEach((queryOption) => {
 });
 
 const queryTypes = document.querySelectorAll('.query-type');
-// eslint-disable-next-line no-plusplus
-for (let i = 0; i < queryTypes.length; i++) {
+for (let i = 0; i < queryTypes.length; i += 1) {
   // eslint-disable-next-line no-loop-func
   queryTypes[i].addEventListener('click', () => {
     selectedQuery = queryTypes[i].textContent;

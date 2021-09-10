@@ -23,8 +23,7 @@ function mealDetailsModal(meal) {
     i += 1;
   }
   let ingredientsHTML = '';
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < ingredient.length; i++) {
+  for (let i = 0; i < ingredient.length; i += 1) {
     ingredientsHTML += `<li><span>${ingredient[i]}</span>: <span>${measure[i]}</span></li>`;
   }
   const youTubeLink = meal.strYoutube.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/');
