@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { renderLikes } from './render-likes';
 import commentsCounter from './comments-counter';
 
@@ -34,7 +35,7 @@ export const postComment = async (idMeal, username, comment) => {
     body: new URLSearchParams({ item_id: idMeal, username, comment }),
   })
     .then((res) => res.text())
-    .then((text) => console.log(text));
+    .then((text) => console.info(text));
 };
 
 export const getComments = async (idMeal) => {
