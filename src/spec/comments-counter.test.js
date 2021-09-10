@@ -3,7 +3,6 @@
  */
 /* eslint-disable quotes */
 /* eslint-disable quote-props */
-/* eslint-disable no-console */
 
 import commentsCounter from '../comments-counter';
 
