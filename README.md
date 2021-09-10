@@ -3,12 +3,13 @@
     <img alt="Microverse" src="https://img.shields.io/badge/-Microverse-blueviolet?style=flat-square">
   </a>
   <a href="https://github.com/enionsouza/BonAppetit">
-    <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/enionsouza/BonAppetit/feature/capstone-project?color=blue&style=flat-square">
+    <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/enionsouza/BonAppetit/main?color=blue&style=flat-square">
   </a>
   <a href="https://github.com/enionsouza/BonAppetit">
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/enionsouza/BonAppetit?color=cyan&label=%E2%98%85%20stars%20&style=flat-square">
   </a>
 </p>
+
 
 # Bon Appétit
 
@@ -56,6 +57,7 @@ cd BonAppetit
 npm install
 npm start
 ```
+
 
 ### Tests
 
