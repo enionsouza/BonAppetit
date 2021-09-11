@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BonAppétit</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand logo p-3">
+          <h1>Bon<img id="img-logo" src="./img/BonAppetit-Logo-tenne-tawny-dark.svg" alt="logo" width="100"><span id="app-logo">App</span>étit</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a id="suggestion-du-chef" class="nav-link active badge bg-light text-dark rounded-pill px-3 highlight" aria-current="page" href="#">Suggestion du Chef</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbar-drop-categories" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Select a Category
+              </a>
+              <ul id="nav-categories" class="dropdown-menu scroll" aria-labelledby="navbar-drop-categories">
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="meal-wrapper">
+      <div class="meal-search">
+        <h2 class="title">Find Meals by Name, Ingredients, Origin, or First Letter</h2>
+        <blockquote>Real food doesn't have ingredients, real food is ingredients.<br>
+          <cite>- Jamie Oliver</cite>
+        </blockquote>
+
+        <form class="meal-search-box input-group">
+          <input type="text" class="search-control form-control" placeholder="Enter a search query..." id="search-input">
+          <button type="button" class="p-0 search-btn btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" title="Choose your query type here">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul id="drop-down-queries" class="dropdown-menu">
+          </ul>
+          <button type="submit" class="search-btn btn btn-outline-secondary" id="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="meal-result">
+        <h2 id="items-counter" class="title"></h2>
+        <div id="meal">
+
+        </div>
+      </div>
+
+
+      <div class="meal-details">
+        <button type = "button" class = "btn recipe-close-btn" id = "recipe-close-btn">
+          <i class = "fas fa-times"></i>
+        </button>
+
+        <div class="meal-details-content">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <div class="footer-bottom-img">
+        <a href="#" class="logo p-3">
+          <h1>Bon<img id="img-logo-footer" src="./img/BonAppetit-Logo-tenne-tawny-dark.svg" alt="logo" width="100"><span id="app-logo-footer">App</span>étit</h1>
+        </a>
+      </div>
+      <div class="author">
+        <p>&copy; 2021 Key. This project is <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank" rel="noopener">MIT Licensed</a> | Built by <a href="https://www.linkedin.com/in/azeezrotimi019 " target="_blank" rel="noopener">Azeez Rotimi</a> and <a href="https://www.linkedin.com/in/enio-neves-de-souza/" target="_blank" rel="noopener">Enio de Souza</a></p>
+      </div> 
+    </div>
+  </footer>
+
+</body>
+
+</html>
